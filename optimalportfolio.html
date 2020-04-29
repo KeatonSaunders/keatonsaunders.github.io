@@ -45,7 +45,7 @@
 								<header class="major">
 									<span class="date">28 April, 2020.</span>
 									<h3>Portfolio construction methods in Python</h3>
-									<p style="text-align:justify; text-align-last:center">This project uses the yahoo finance library to collect 5 years' worth of historical data for 10 large cap JSE-listed stocks and compares Monte Carlo simulation
+									<p style="text-align:justify; text-align-last:center">This project uses the yahoo finance API to collect 5 years' worth of historical data for 10 large cap JSE-listed stocks and compares Monte Carlo simulation
 										to Constrained Minimization as methods for optimal portfolio construction. In both approaches the optimal portfolio is
 										considered to be the portfolio with the highest Sharpe Ratio. The project finds Monte Carlo simulation to be limited in its
 										application to portfolios where the ideal weighting of constituents is heavily weighted in favour of a small number of stocks,
@@ -62,14 +62,14 @@
 								<p>The Scipy library was imported and the 'minimize' module utilized in order to perform the constrained minimization. Sequential Least Squares Programming was chosen as the minimization routine. The restrictions placed on the portfolio were that a given stock cannot have a weighting of less than 2% or greater than 40%. The weightings that resulted were as follows:
 									[NPN: 2%, BTI: 12%, BHP: 7%, CFR: 29%, AGL: 2%, FSR: 2%, SBK: 2%, VOD: 40%, MTN: 2%, ABG: 2%], and resulted in a portfolio with an annualized return of 9%, annualized volatility of 21%, and Sharpe Ratio of 0.43.
 								</p>
-								<p> The Monte Carlo simulation involved generating random weights for the portfolio 50,000 times, each time calculation the annual return, volatility and sharpe ratio of the portfolio over the 5 year period. The optimal portfolio using this method resulted in the following weightings: 
+								<p> The Monte Carlo simulation involved generating random weights for the portfolio 50,000 times, each time calculation the annual return, volatility and Sharpe Ratio of the portfolio over the 5 year period. The optimal portfolio using this method resulted in the following weightings: 
 									[NPN: 1%, BTI: 7%, BHP: 20%, CFR: 20%, AGL: 4%, FSR: 1%, SBK: 0.5%, VOD: 26%, MTN: 1.5%, ABG: 19%] and produced an annualized return of 7%, annualized volatility of 19.5% and a Sharpe Ratio of 0.40.
 								</p>
 								<div class="image main"><img src="images/frontier.png" alt="" /></div>
 								<!--style="width:700px;height:400px;display: block;margin-left: auto;margin-right: auto"-->
-								<p>The reason that very few of the results from the monte carlo simulation don't lie on the efficient frontier is due to constraints and the way the portfolio would need to be balanced to perform optimally.
+								<p>The reason that very few of the results from the Monte Carlo simulation don't lie on the efficient frontier is due to constraints and the way the portfolio would need to be balanced to perform optimally.
 									The monte carlo simulation provides a fairly even distribution of weights and this is nowwhere near what would create the best return for a given level of volatility in this South African portfolio. One can see from the constrained minimization that the optimal portfolio would hold only 4 stocks above the minimum weighting.</p>
-								<p>You can view the full source code on my Github page by clicking the GITHUB icon at the top of the page.</p>
+								<p>You can view the full source code by clicking on the Github icon at the top of this page.</p>
 							</section>
 
 					</div>
