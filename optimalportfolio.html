@@ -56,7 +56,9 @@
 								</header>
 								<div class="image main"><img src="images/performance.png" alt="" /></div>
 								<p>The 10 large-cap JSE-listed stocks chosen are Naspers Ltd, British American Tobacco Plc, BHP Group Plc, Compagnie Financiere Richemont SA, Anglo American Plc, Firstrand Ltd, Standard Bank Group Ltd, 
-									Vodacom Group Ltd, MTN Group Ltd and Absa Group Ltd. The intention was to choose the 10 largest stocks by market capitalization but Anheuser-Busch InBev SA and Glencore had to be excluded due to a lack of historical data. </p>
+									Vodacom Group Ltd, MTN Group Ltd and Absa Group Ltd. The intention was to choose the 10 largest stocks by market capitalization but Anheuser-Busch InBev SA and Glencore had to be excluded due to a lack of historical data. 
+									Note that the weights below would have produced an optimal portfolio over the previous 5 year period, but this of course does not mean that it would remain that way going forward. To produce more realistic results one
+									would also need to take portfolio rebalancing and the frequency thereof into account, but the purpose of this project was merely to take a look at some of the tools available in python.</p>
 								<p>The Scipy library was imported and the 'minimize' module utilized in order to perform the constrained minimization. Sequential Least Squares Programming was chosen as the minimization routine. The restrictions placed on the portfolio were that a given stock cannot have a weighting of less than 2% or greater than 40%. The weightings that resulted were as follows:
 									[NPN: 2%, BTI: 12%, BHP: 7%, CFR: 29%, AGL: 2%, FSR: 2%, SBK: 2%, VOD: 40%, MTN: 2%, ABG: 2%], and resulted in a portfolio with an annualized return of 9%, annualized volatility of 21%, and Sharpe Ratio of 0.43.
 								</p>
