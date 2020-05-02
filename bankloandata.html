@@ -65,8 +65,10 @@
 									Based on the above graph, an optimal k-value of 12 is chosen. The model is then retrained using the new k-value and the classification report
 									yields the following results:
 								</p>
-								<p>
-								<table class="table-wrapper">
+								
+								<div class="table-wrapper">
+								<table>
+									<thead>
 										<tr>
 											<th></th>
 											<th>Precision</th>
@@ -74,6 +76,7 @@
 											<th>f1-score</th>
 											<th>Support</th>
 										</tr>
+									</thead>
 										<tr>
 											<th>0</th>
 											<td>0.68</td>
@@ -96,21 +99,22 @@
 											<td>300</td>
 										</tr>
 										<tr>
-												<th>macro-avg</th>
-												<td>0.74</td>
-												<td>0.67</td>
-												<td>0.69</td>
-												<td>300</td>
-											</tr>
+											<th>macro-avg</th>
+											<td>0.74</td>
+											<td>0.67</td>
+											<td>0.69</td>
+											<td>300</td>
+										</tr>
 										<tr>
-												<th>weighted-avg</th>
-												<td>0.76</td>
-												<td>0.77</td>
-												<td>0.75</td>
-												<td>300</td>
-											</tr>
+											<th>weighted-avg</th>
+											<td>0.76</td>
+											<td>0.77</td>
+											<td>0.75</td>
+											<td>300</td>
+										</tr>
 									</table>
-								</p>
+									</div>
+								
 									<p>In order to understand the above results it is useful to know the following:</p>
 									<li>Precision = TP/(TP + FP)</li>
 									<li>Recall = TP/(TP+FN)</li>
@@ -123,14 +127,9 @@
 									<li>False positive: actual = 0, predicted = 1</li>
 									<li>False negative: actual = 1, predicted = 0</li>
 									<li>True negative: actual = 0, predicted = 0</li>
-								<p> 
-
-								</p>
 								
-								
-								<p>
-
-								</p>
+									<p></p>
+									
 								<p>You can view the full source code on my Github page by clicking the GITHUB icon at the top of the page.</p>
 							</section>
 
