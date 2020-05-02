@@ -45,28 +45,92 @@
 								<header class="major">
 									<span class="date">29 April, 2020.</span>
 									<h3>Classification of bank loan data using KNN and Logistic Regression</h3>
-									<p style="text-align:justify; text-align-last:center">This project makes use of the Sci-kit learn machine learning library in Python. Preprocessing is used to encode labels
-										in the data and standardize variables. The KNeighborsClassifier and LogisticRegression models are then used to classify the data into 'good' and 'bad' loan applications. 
+									<p style="text-align:justify; text-align-last:center">This project makes use of the Sci-kit learn machine learning library in Python. Preprocessing is used to encode categorical variables
+										and standardize all variables. The KNeighborsClassifier and LogisticRegression models are then used to classify the data into 'good' and 'bad' loan applications. 
 										Because the data is labeled, we are able to use the Sci-kit learn classification report to compare our model's predictions against the labels in the
 										original dataset. The project uses German bank loan data from the UCI Machine Learning Library, a description of which can be viewed here: <a href="http://home.cse.ust.hk/~qyang/221/Assignments/German/">UCI German Dataset</a>
 									</p>
-								<!-- </header>
-								<div class="image main"><img src="images/performance.png" alt="" /></div>
-								<p>The 10 large-cap JSE-listed stocks chosen are Naspers Ltd, British American Tobacco Plc, BHP Group Plc, Compagnie Financiere Richemont SA, Anglo American Plc, Firstrand Ltd, Standard Bank Group Ltd, 
-									Vodacom Group Ltd, MTN Group Ltd and Absa Group Ltd. The intention was to choose the 10 largest stocks by market capitalization but Anheuser-Busch InBev SA and Glencore had to be excluded due to a lack of historical data. 
-									Note that the weights below would have produced an optimal portfolio over the previous 5 year period, but this of course does not mean that it would remain that way going forward. To produce more realistic results one
-									would also need to take portfolio rebalancing and the frequency thereof into account, but the purpose of this project was merely to take a look at some of the tools available in python.</p>
-								<p>The Scipy library was imported and the 'minimize' module utilized in order to perform the constrained minimization. Sequential Least Squares Programming was chosen as the minimization routine. The restrictions placed on the portfolio were that a given stock cannot have a weighting of less than 2% or greater than 40%. The weightings that resulted were as follows:
-									[NPN: 2%, BTI: 12%, BHP: 7%, CFR: 29%, AGL: 2%, FSR: 2%, SBK: 2%, VOD: 40%, MTN: 2%, ABG: 2%], and resulted in a portfolio with an annualized return of 9%, annualized volatility of 21%, and Sharpe Ratio of 0.43.
+								</header>
+								<div class="image main"><img src="images/Seaborn.png" alt="" /></div>
+								<p>
+									This project begins by importing the data and doing some basic exploratory data analysis using Seaborn to get a feel for what we are working with (above). The categorical 
+									variables are then encoded using sklearn's preprocessing module, as the model cannot handle the categorical variables in their raw form. The variables are then standardized using
+									sklearn's StandardScaler before using train_test_split to split the data into training and testing subsets respectively. A testing size of 30% of the original dataset is chosen, 
+									as is common practice. The KNeighborsClassifier model is then fit to the training data, starting with a k-value of 1 neighbour. Following this, the optimal
+									k-value needs is found by calculating the error rate (the percentage of predicted y-values which are not equal to the actual testing y-values) for each value of k between 1 and 40.
+									This is shown below:
 								</p>
-								<p> The Monte Carlo simulation involved generating random weights for the portfolio 50,000 times, each time calculation the annual return, volatility and sharpe ratio of the portfolio over the 5 year period. The optimal portfolio using this method resulted in the following weightings: 
-									[NPN: 1%, BTI: 7%, BHP: 20%, CFR: 20%, AGL: 4%, FSR: 1%, SBK: 0.5%, VOD: 26%, MTN: 1.5%, ABG: 19%] and produced an annualized return of 7%, annualized volatility of 19.5% and a Sharpe Ratio of 0.40.
+								<div class="image main"><img src="images/KNN.png" alt="" /></div>
+								<p>
+									Based on the above graph, an optimal k-value of 12 is chosen. The model is then retrained using the new k-value and the classification report
+									yields the following results:
 								</p>
-								<div class="image main"><img src="images/frontier.png" alt="" /></div>
-								style="width:700px;height:400px;display: block;margin-left: auto;margin-right: auto"
-								<p>The reason that very few of the results from the monte carlo simulation don't lie on the efficient frontier is due to constraints and the way the portfolio would need to be balanced to perform optimally.
-									The monte carlo simulation provides a fairly even distribution of weights and this is nowwhere near what would create the best return for a given level of volatility in this South African portfolio. One can see from the constrained minimization that the optimal portfolio would hold only 4 stocks above the minimum weighting.</p>
-								<p>You can view the full source code on my Github page by clicking the GITHUB icon at the top of the page.</p> -->
+								<table>
+										<tr>
+											<th></th>
+											<th>Precision</th>
+											<th>Recall</th>
+											<th>f1-score</th>
+											<th>Support</th>
+										</tr>
+										<tr>
+											<th>0</th>
+											<td>0.68</td>
+											<td>0.43</td>
+											<td>0.53</td>
+											<td>90</td>
+										</tr>
+										<tr>
+											<th>1</th>
+											<td>0.79</td>
+											<td>0.91</td>
+											<td>0.85</td>
+											<td>210</td>
+										</tr>
+										<tr>
+											<th>accuracy</th>
+											<td>-</td>
+											<td>-</td>
+											<td>0.77</td>
+											<td>300</td>
+										</tr>
+										<tr>
+												<th>macro-avg</th>
+												<td>0.74</td>
+												<td>0.67</td>
+												<td>0.69</td>
+												<td>300</td>
+											</tr>
+										<tr>
+												<th>weighted-avg</th>
+												<td>0.76</td>
+												<td>0.77</td>
+												<td>0.75</td>
+												<td>300</td>
+											</tr>
+									</table>
+
+									<p>In order to understand the above results it is useful to know the following:</p>
+									<li>Precision = TP/(TP + FP)</li>
+									<li>Recall = TP/(TP+FN)</li>
+									<li>F1 Score = 2*(Recall * Precision) / (Recall + Precision)</li>
+									<li>Accuracy = Number of correct predicitions / Total predictions</li>
+									<p></p>
+									<p>Where:</p>
+
+									<li>True positive: actual = 1, predicted = 1</li>
+									<li>False positive: actual = 0, predicted = 1</li>
+									<li>False negative: actual = 1, predicted = 0</li>
+									<li>True negative: actual = 0, predicted = 0</li>
+								<p> 
+
+								</p>
+								
+								
+								<p>
+
+								</p>
+								<p>You can view the full source code on my Github page by clicking the GITHUB icon at the top of the page.</p>
 							</section>
 
 					</div>
