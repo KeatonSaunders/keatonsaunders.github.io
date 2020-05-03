@@ -46,14 +46,14 @@
 									<span class="date">2 May, 2020.</span>
 									<h3>Classification of bank loan data using KNN and Logistic Regression</h3>
 									<p style="text-align:justify; text-align-last:center">This project makes use of the Sci-kit learn machine learning library in Python. Preprocessing is used to encode categorical variables
-										and standardize all variables. The KNeighborsClassifier and LogisticRegression models are then used to classify the data into 'good' and 'bad' loan applications. 
+										and standardize all variables. K-Nearest Neighbours and Logistic Regression models are then used to classify the data into 'good' and 'bad' loan applications. 
 										Because the data is labeled, we are able to use the Sci-kit learn classification report to compare our model's predictions against the labels in the
 										original dataset. The project uses German bank loan data from the UCI Machine Learning Library, a description of which can be viewed here: <a href="http://home.cse.ust.hk/~qyang/221/Assignments/German/">UCI German Dataset</a>
 									</p>
 								</header>
 								<div class="image main"><img src="images/Seaborn.png" alt="" /></div>
 								<p>
-									This project begins by importing the data and doing some basic exploratory data analysis using Seaborn to get a feel for what we are working with (above). The categorical 
+									This project begins by importing the data and doing some basic exploratory data analysis using Seaborn in order to better understand the dataset (above). The categorical 
 									variables are then encoded using sklearn's preprocessing module, as the model cannot handle the categorical variables in their raw form. The variables are then standardized using
 									sklearn's StandardScaler before using train_test_split to split the data into training and testing subsets respectively. A testing size of 30% of the original dataset is chosen, 
 									as is common practice. The KNeighborsClassifier model is then fit to the training data, starting with a k-value of 1 neighbour. Following this, the optimal
@@ -136,6 +136,21 @@
 										<li>True negative: actual = 0, predicted = 0</li>
 									</div>
 									<p></p>
+									<p>The interpretation of the above results depends on how we want to use this model. 
+										Sometimes it's more important to correctly classify one's samples than getting all of them (high precision). 
+										At other times it may be more important to 'get' all of them, than to get all of them correct (high recall).
+										A model with high precision is therefore preferred when the cost of an incorrect classification is high.
+										In this context we can assume that the severity of incorrectly approving a bad loan application is high as it would lead to a loss for the bank, unless collateral is attached.
+										In this case a precision of 68% for bad loan applications is too low for an acceptable model, as this would mean that 96 out of the 300 bad loan applications in the dataset 
+										would have been approved. However, if the bank's sole mission was to give out as many loans as possible, ensuring that eligible collateral was attached in all cases,
+										then perhaps the recall of 91% on 'good' applications would mean that this model may be useful.
+									</p>
+									<p>
+										Logistic regression was also performed as a comparison, and source code based on a reduced set of features is also available.
+										I thought it might be a useful exercise to perform feature selection, as some of the descriptions of certain variables can be vague, and perhaps there are some independent variables which are not useful, not to mention correlated.
+										I therefore used Recursive Feature Elimination, which is also part of the sklearn library, in order to identify the optimal number of features for which the accuracy of the logistic regression model is highest.
+										The results produced by the logistic regression model are extremely close, and slightly worse, than those above.
+									</p>
 
 								<p>You can view the full source code on my Github page by clicking the GITHUB icon at the top of the page.</p>
 							</section>
@@ -194,7 +209,7 @@
 
 				<!-- Copyright -->
 					<div id="copyright">
-						<ul><li>&copy; Keaton Saunders</li><!--<li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>-->
+							<ul><li>&copy; MASSIVELY</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
 					</div>
 
 			</div>

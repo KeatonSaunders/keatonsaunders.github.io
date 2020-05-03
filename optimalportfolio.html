@@ -47,24 +47,23 @@
 									<h3>Portfolio construction methods in Python</h3>
 									<p style="text-align:justify; text-align-last:center">This project uses the yahoo finance API to collect 5 years' worth of historical data for 10 large cap JSE-listed stocks and compares Monte Carlo simulation
 										to Constrained Minimization as methods for optimal portfolio construction. In both approaches the optimal portfolio is
-										considered to be the portfolio with the highest Sharpe Ratio. The project finds Monte Carlo simulation to be limited in its
-										application to portfolios where the ideal weighting of constituents is heavily weighted in favour of a small number of stocks,
-										due the fact that the Monte Carlo simulation produces a fairly even disribution of weightings. However, one could use
-										a more appropriate disribution in the Monte Carlo simulation, which is not done here. Moreover, the Monte Carlo simulation is
-										computationally expensive and hence Constrained Minimization is the preferred method in this context. <br />
-										<br/>
+										considered to be the portfolio with the highest Sharpe Ratio.  
 										Note that the weights below would have produced an optimal portfolio over the previous 5 year period, but this of course does not mean that it would remain that way going forward. To produce more realistic results one
 										would need to take portfolio rebalancing and the frequency thereof into account. To make it a useful comparison between portfolio construction methods,
 										one would need to generate the optimal portfolio at each quarterly rebalancing date (using the previous 1 year's historical data, for example), and then hold these weights in the portfolio throughout the quarter. In addition, turnover
-										costs should be considered. This would then allow the analyst to assess the results of the portfolio construction method, as opposed to being an exercise in hindsight. At this stage, the project is merely a look at some of the tools available in python, 
-										but I am hoping to expand it into the full project in future.
+										costs should be considered. This would then allow the analyst to assess the results of the portfolio construction method in a forward-looking sense, as opposed to being an exercise in hindsight. At this stage, the project is merely a look at some of the tools available in python, 
+										but I am hoping to expand it into the full project in the near future. 
 									</p>
 								</header>
 								<div class="image main"><img src="images/performance.png" alt="" /></div>
 								<p>The 10 large-cap JSE-listed stocks chosen are Naspers Ltd, British American Tobacco Plc, BHP Group Plc, Compagnie Financiere Richemont SA, Anglo American Plc, Firstrand Ltd, Standard Bank Group Ltd, 
 									Vodacom Group Ltd, MTN Group Ltd and Absa Group Ltd. The intention was to choose the 10 largest stocks by market capitalization but Anheuser-Busch InBev SA and Glencore had to be excluded due to a lack of historical data. 
 									</p>
-								<p>The Scipy library was imported and the 'minimize' module utilized in order to perform the constrained minimization. Sequential Least Squares Programming was chosen as the minimization routine. The restrictions placed on the portfolio were that a given stock cannot have a weighting of less than 2% or greater than 40%. The weightings that resulted were as follows:
+								<p>The Scipy library was used along with the 'minimize' module in order to perform the constrained minimization. Sequential Least Squares Programming was chosen as the minimization routine, as is common when solving non-linear optimization problems.
+									It is powerful enough for real problems because it can handle any degree of non-linearity including non-linearity in the constraints. The main disadvantage is that the method incorporates several derivatives, which likely need to be worked analytically in advance of iterating to a solution, so it becomes cumbersome for large problems with many variables or constraints.
+									However, that is not a concern in our case and the algorithm performs very well. Note that in order to find the optimal portfolio weights, one aims to minimize the negative of the Sharpe ratio, thus finding the maximum Sharpe ratio.</p>
+									<p>
+									The restrictions placed on the portfolio were that a given stock cannot have a weighting of less than 2% or greater than 40%. The weightings that resulted were as follows:
 									[NPN: 2%, BTI: 12%, BHP: 7%, CFR: 29%, AGL: 2%, FSR: 2%, SBK: 2%, VOD: 40%, MTN: 2%, ABG: 2%], and resulted in a portfolio with an annualized return of 9%, annualized volatility of 21%, and Sharpe Ratio of 0.43.
 								</p>
 								<p> The Monte Carlo simulation involved generating random weights for the portfolio 50,000 times, each time calculating the annual return, volatility and Sharpe Ratio of the portfolio over the 5 year period. The optimal portfolio using this method resulted in the following weightings: 
@@ -72,8 +71,9 @@
 								</p>
 								<div class="image main"><img src="images/frontier.png" alt="" /></div>
 								<!--style="width:700px;height:400px;display: block;margin-left: auto;margin-right: auto"-->
-								<p>The reason that very few of the results from the Monte Carlo simulation don't lie on the efficient frontier is due to constraints and the way the portfolio would need to be balanced to perform optimally.
-									The monte carlo simulation provides a fairly even distribution of weights and this is nowwhere near what would create the best return for a given level of volatility in this South African portfolio. One can see from the constrained minimization that the optimal portfolio would hold only 4 stocks above the minimum weighting.</p>
+								<p>As stated in the introduction, this is more of a python exercise than it is about finding a portfolio construction method which outperforms a benchmark. Nonetheless, constrained minimization is preferred in this context due to its computational efficiency and, no surprises here, the ability to put constraints on the portfolio weights.
+									The Monte Carlo simulation is computationally expensive (although not really a concern when rebalancing quarterly), but also only varies the portfolio weights between zero and one, which may be unrealistic in most portfolios.
+								</p>
 								<p>The code is available by clicking on the Github icon at the top of this page.</p>
 							</section>
 
@@ -132,7 +132,7 @@
 
 				<!-- Copyright -->
 					<div id="copyright">
-						<ul><li>&copy; Keaton Saunders</li><!--<li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>-->
+							<ul><li>&copy; MASSIVELY</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
 					</div>
 
 			</div>
