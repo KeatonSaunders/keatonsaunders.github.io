@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Keaton Saunders</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="https://github.com/KeatonSaunders/Python/blob/master/Finance%20projects/Algorithmic%20Trading.ipynb" class="logo">Github</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<!-- <li class="active"><a href="generic.html">About</a></li>
+							<li><a href="elements.html">Contact</a></li> -->
+						</ul>
+						<ul class="icons">
+							<!-- <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li> -->
+							<li><a href="https://www.linkedin.com/in/keaton-saunders-9426b8113/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://github.com/KeatonSaunders" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">18 April, 2021.</span>
+									<h3>Backtesting of Algorithmic Trading Strategies in Python</h3>
+									<p style="text-align:justify; text-align-last:center">
+										This project is simply to demonstrate how one would construct a generic backtesting class for the backtesting of algorithmic trading strategies in python. 
+										The simple moving average strategy lends itself nicely towards a vectorized way of writing code. I have also implemented this for momentum and mean-reversion based strategies, but
+										choose to only show SMA here for the purpose of demonstration. The linear and logistic regression is a first step in demonstrating how one could use 'machine learning' techniques to try and 
+										predict market movements (and is also a neat use of scikit-learn). I have also implemented a class which uses deep neural networks (tensorflow and keras) to predict movements, which has shown some
+										promising results. Transaction costs are excluded from the analysis for simplicity but would be key to assessing the viability of a strategy. This does not constitute financial advice.
+									</p>
+
+									<p style="text-align:justify; text-align-last:center">
+									The SMA strategy is long when SMA1 > SMA2, and short when SMA1 < SMA2. A brute force approach is then used to solve for the optimal SMA1 and SMA2
+									parameters that produce the best performance. Of course, this is an exercise in hindisght and would require significant out-of-sample testing to prove reliability.
+									Nonetheless, I think the class is a nice starting point for backtesting purposes. The results on USDZAR over the last 5 years are shown below, where the optinal parameters were found to be (50, 100).
+									Please hit the GitHub icon at the top of the page to have a look at the code :)
+								    </p>
+
+								</header>
+								<div class="image main"><img src="images/algo.png" alt="" /></div>
+								<p>The idea here is to try and predict market direction using linear and logistic regression. Log returns are used due to their characteristic of making time series data stationary.
+								   For the linear regression, instead of trying to predict an actual level, we simply take the sign of the log returns (lags) in order to try and predict a direction, 
+								   as this is what we need from a trading strategy point of view. A logistic regression model is also fitted to predict market direction, where the 'features' are the lags
+								   that would be referred to as the independent variables in the linear regression. One has to be careful not to fall into the trap of overfitting, and so functionality is provided
+								   in the class so that one can use training data to fit the model, and testing data for the evaluation of strategy performance. The results on USDZAR with 4 years training data, 
+								   and testing data from beginning of 2020 to date, are shown below:
+
+									</p>
+
+								<div class="image main"><img src="images/algo2.png" alt="" /></div>
+								<!--style="width:700px;height:400px;display: block;margin-left: auto;margin-right: auto"-->
+								<p>As stated in the introduction, this is more of a demonstration as to how one could go about constructing these backtesting classes in a pythonic way, rather than an exercise in finding the optimal trading strategy.
+									Some momentum intraday, mean-reversion and market prediction using neural networks strategies show some interesting results. The impact of transaction costs can also turn a strategy that appeared to be profitable, into 
+									a losing strategy very quickly. How one deals with market / limit orders and executing trades through a prime brokerage API would be a very intricate topic that I hope to cover in the future. Thank you for your time.
+								</p>
+								<p>The code is available by clicking on the Github icon at the top of this page.</p>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="alt">
+							<iframe class="alt" src="https://docs.google.com/forms/d/e/1FAIpQLSdErypLxtWj3kILVvrDHuenvCKGx1up7uIv4T_FsyiacB086w/viewform?embedded=true" width="360" height="420" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+							
+							<!-- <form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form> -->
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Cape Town, Western Cape<br />
+								South Africa, 7405</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">079 529 0163</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">keatonsaunders95@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<!-- <li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li> -->
+									<li><a href="https://www.linkedin.com/in/keaton-saunders-9426b8113/" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
+									<li><a href="https://github.com/KeatonSaunders" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+							<ul><li>&copy; MASSIVELY</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
